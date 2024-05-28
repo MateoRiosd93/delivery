@@ -9,7 +9,7 @@ import { Delivery } from '../../models/delivery';
   styleUrls: ['./delivery-date.component.css'],
 })
 export class DeliveryDateComponent implements OnInit {
-  delivery: Delivery = {} as Delivery;
+  delivery: Delivery | null  = {} as Delivery;
 
   form: FormGroup = new FormGroup({
     deliveryDate: new FormControl('', Validators.required),
@@ -23,7 +23,11 @@ export class DeliveryDateComponent implements OnInit {
 
   handlerDelivery() {
     this.deliveryService.delivery.subscribe({
-      next: (delivery) => (this.delivery = delivery),
+      next: (delivery) => {
+        if(delivery){
+          this.delivery = delivery
+        }
+      },
     });
   }
 
@@ -33,9 +37,13 @@ export class DeliveryDateComponent implements OnInit {
       return;
     }
 
-    const { deliveryDate } = this.form.value;
+    if(!this.delivery){
+      return
+    }
 
+    const { deliveryDate } = this.form.value;
     const delivery: Delivery = { ...this.delivery, deliveryDate };
+
     this.deliveryService.delivery.next(delivery);
     this.form.reset();
   }

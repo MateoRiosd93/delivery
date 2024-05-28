@@ -11,8 +11,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     PageComponent,
     DeliveryComponent,
-    DisplayComponent,
-    DeliveryDateComponent
+    DeliveryDateComponent,
+    DisplayComponent
   ],
   imports: [
     CommonModule,

@@ -4,6 +4,7 @@ import { DeliveryService } from '../../services/delivery.service';
 import { Departament } from '../../models/departament';
 import { City } from '../../models/city';
 import { Delivery } from '../../models/delivery';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-delivery',
@@ -16,12 +17,12 @@ export class DeliveryComponent implements OnInit {
 
   form: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
-    departament: new FormControl('', Validators.required),
+    departament: new FormControl(null, Validators.required),
     city: new FormControl('', Validators.required),
     address: new FormControl('', Validators.required),
   });
 
-  constructor(private deliveryService: DeliveryService) {}
+  constructor(private deliveryService: DeliveryService, private router: Router) {}
 
   ngOnInit(): void {
     this.getDepartaments();
@@ -35,7 +36,7 @@ export class DeliveryComponent implements OnInit {
   }
 
   getCitiesForDepartament(){
-    const id = this.form.get('departament')?.value;
+    const { id } = this.form.get('departament')?.value;
 
     if(!id) return
 
@@ -46,26 +47,23 @@ export class DeliveryComponent implements OnInit {
   }
 
   saveDelivery() {
-    console.log(this.form.valid);
-    console.log(this.form.value);
-
     if(!this.form.valid){
       alert("Aun no es valido el formulario, verifique y guarde nuevamente")
       return
     }
 
     const { name, departament, city, address } = this.form.value;
-
+    const { name: departamentName } = departament
+    
     const delivery: Delivery = {
       name,
-      departament,
+      departament: departamentName,
       city,
       address
     }
 
     this.deliveryService.delivery.next(delivery)
     this.form.reset()
-
-    // TODO: Moverlo a la pestaña de fecha entrega. 
+    this.router.navigate(["delivery/fechaentrega"])
   }
 }

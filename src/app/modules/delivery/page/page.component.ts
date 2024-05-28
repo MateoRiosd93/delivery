@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Delivery, INITIAL_DELIVERY } from '../models/delivery';
 import { DeliveryService } from '../services/delivery.service';
+import { Delivery } from '../models/delivery';
 
 @Component({
   selector: 'app-page',
@@ -8,8 +8,7 @@ import { DeliveryService } from '../services/delivery.service';
   styleUrls: ['./page.component.css'],
 })
 export class PageComponent implements OnInit {
-  // TODO: Revisar el tipado.
-  delivery: any
+  delivery: Delivery | null = null
 
   constructor(private deliveryService: DeliveryService) {}
 
@@ -19,10 +18,7 @@ export class PageComponent implements OnInit {
 
   handlerDelivery() {
     this.deliveryService.delivery.subscribe({
-      next: (delivery) => {
-        this.delivery = delivery
-        console.log(delivery);
-      },
+      next: delivery => this.delivery = delivery,
       error: console.log,
     });
   }

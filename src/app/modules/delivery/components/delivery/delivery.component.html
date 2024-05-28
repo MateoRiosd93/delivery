@@ -7,7 +7,7 @@
     <div class="flex flex-col gap-2">
         <label for="departament">Departamento</label>
         <select id="departament" placeholder="Ingresa el departamento..." formControlName="departament" (change)="getCitiesForDepartament()">
-            <option [value]="departament.id" *ngFor="let departament of departaments">{{ departament.name }}</option>
+            <option [ngValue]="departament" *ngFor="let departament of departaments">{{ departament.name }}</option>
         </select>
     </div>
     <div *ngIf="this.form.get('departament')?.value" class="flex flex-col gap-2">

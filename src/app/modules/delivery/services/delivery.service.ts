@@ -12,7 +12,7 @@ import { Delivery, INITIAL_DELIVERY } from '../models/delivery';
 export class DeliveryService {
   private urlBase = environment.urlBase;
 
-  delivery: BehaviorSubject<Delivery> = new BehaviorSubject<Delivery>(INITIAL_DELIVERY)
+  delivery: BehaviorSubject<Delivery | null > = new BehaviorSubject<Delivery | null>(null)
 
   constructor(private http: HttpClient) {}
 

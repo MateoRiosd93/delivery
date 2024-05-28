@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { DeliveryService } from '../../services/delivery.service';
+import { Component, Input } from '@angular/core';
 import { Delivery } from '../../models/delivery';
 
 @Component({
@@ -7,16 +6,7 @@ import { Delivery } from '../../models/delivery';
   templateUrl: './display.component.html',
   styleUrls: ['./display.component.css'],
 })
-export class DisplayComponent implements OnInit {
-  delivery: any = undefined
+export class DisplayComponent {
+  @Input() delivery: Delivery | null = null
 
-  constructor(private deliveryService: DeliveryService) {}
-
-  ngOnInit(): void {
-    this.deliveryService.delivery.subscribe({
-      next: (delivery) => (this.delivery = delivery),
-    });
-  }
-
-  
 }
