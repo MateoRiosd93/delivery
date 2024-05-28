@@ -1,8 +1,12 @@
-<p *ngIf="!delivery">No se ha creado aun un delivery</p>
-<article *ngIf="delivery">
-    <h3>{{ delivery.name }}</h3>
-    <p>{{ delivery.departament }}</p>
-    <p>{{ delivery.city }}</p>
-    <p>{{ delivery.address }}</p>
-    <p>{{ delivery.deliveryDate}}</p>
+<div *ngIf="!delivery" class="w-96 h-44 px-4 flex justify-center items-center bg-white/70 shadow-lg rounded-sm">
+    <p>No se ha creado aun un delivery</p>
+</div>
+<article *ngIf="delivery" class="flex flex-col gap-2 w-96 h-44 p-4 bg-white/70 shadow-lg rounded-sm">
+    <h3 class="font-semibold text-2xl">{{ delivery.name }}</h3>
+    <div class="flex gap-2 items-center">
+        <p class="font-medium text-lg">{{ delivery.departament }}</p> - 
+        <p class="font-medium text-lg">{{ delivery.city }}</p>
+    </div>
+    <p class="font-medium">{{ delivery.address }}</p>
+    <p class="font-bold underline">{{ delivery.deliveryDate}}</p>
 </article>
