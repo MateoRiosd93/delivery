@@ -1,0 +1,12 @@
+<main class="flex gap-4 mt-5 px-4">
+    <div class="flex flex-col gap-4">
+        <nav>
+            <ul class="flex gap-2">
+                <a [routerLink]="['direccionentrega']" routerLinkActive="router-link-active">Dirección</a>
+                <a [routerLink]="['fechaentrega']" routerLinkActive="router-link-active">Fecha de entrega</a>
+            </ul>
+        </nav>
+        <router-outlet></router-outlet>
+    </div>
+    <app-display></app-display>
+</main>

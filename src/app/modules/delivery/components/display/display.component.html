@@ -1,0 +1,8 @@
+<p *ngIf="delivery">No se ha creado aun un delivery</p>
+<article *ngIf="delivery">
+    <h3>{{ delivery.name }}</h3>
+    <p>{{ delivery.departament }}</p>
+    <p>{{ delivery.city }}</p>
+    <p>{{ delivery.address }}</p>
+    <p>{{ delivery.deliveryDate}}</p>
+</article>

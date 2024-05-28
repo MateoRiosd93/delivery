@@ -1,0 +1,27 @@
+<p>Completa la siguiente informacion para tu <strong>delivery</strong></p>
+<form [formGroup]="form" (ngSubmit)="saveDelivery()" class="flex flex-col gap-4">
+    <div class="flex flex-col gap-2">
+        <label for="name">Nombre</label>
+        <input type="text" id="name" formControlName="name" placeholder="Cual es tu nombre?">
+    </div>
+    <div class="flex flex-col gap-2">
+        <label for="departament">Departamento</label>
+        <select id="departament" placeholder="Ingresa el departamento..." formControlName="departament" (change)="getCitiesForDepartament()">
+            <option [value]="departament.id" *ngFor="let departament of departaments">{{ departament.name }}</option>
+        </select>
+    </div>
+    <div *ngIf="this.form.get('departament')?.value" class="flex flex-col gap-2">
+        <label for="city">Ciudad</label>
+        <select id="city" placeholder="Ingresa la ciudad..." formControlName="city">
+            <option [value]="city.name" *ngFor="let city of cities">{{ city.name }}</option>
+        </select>
+    </div>
+    <div *ngIf="!this.form.get('departament')?.value" class="flex flex-col gap-2">
+        <p class="font-semibold underline">Ingrese la ciudad para ver las ciudades...</p>
+    </div>
+    <div class="flex flex-col gap-2">
+        <label for="address">Dirección</label>
+        <input type="text" id="address" formControlName="address" placeholder="Ingresa la dirección...">
+    </div>
+    <button class=" py-2 px-4 border-gray-400 rounded-sm">Guardar direccion</button>
+</form>

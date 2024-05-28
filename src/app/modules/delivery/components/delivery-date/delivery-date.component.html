@@ -1,0 +1,7 @@
+<form [formGroup]="form" (ngSubmit)="addDeliveryDate()">
+    <div class="flex flex-col gap-2">
+        <label for="delivery">Ingesa la fecha de entraga</label>
+        <input type="date" id="delivery" formControlName="deliveryDate">
+    </div>
+    <button class=" py-2 px-4 border-gray-400 rounded-sm">Agregar fecha de entraga</button>
+</form>
