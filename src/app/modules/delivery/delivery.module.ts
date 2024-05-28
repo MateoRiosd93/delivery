@@ -6,6 +6,7 @@ import { DeliveryComponent } from './components/delivery/delivery.component';
 import { DisplayComponent } from './components/display/display.component';
 import { DeliveryDateComponent } from './components/delivery-date/delivery-date.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     DeliveryRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class DeliveryModule { }

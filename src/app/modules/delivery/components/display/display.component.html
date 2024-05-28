@@ -8,5 +8,6 @@
         <p class="font-medium text-lg">{{ delivery.city }}</p>
     </div>
     <p class="font-medium">{{ delivery.address }}</p>
-    <p class="font-bold underline">{{ delivery.deliveryDate}}</p>
+    <p class="font-bold underline">{{ delivery.deliveryDate | formatDate }}</p>
 </article>
+ 

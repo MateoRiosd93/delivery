@@ -9,6 +9,6 @@ import { LinkedInComponent } from './components/icons/linked-in/linked-in.compon
 @NgModule({
   declarations: [FormatDatePipe, HeaderComponent, FooterComponent, InstagramComponent, LinkedInComponent],
   imports: [CommonModule],
-  exports: [HeaderComponent, FooterComponent, InstagramComponent, LinkedInComponent],
+  exports: [HeaderComponent, FooterComponent, InstagramComponent, LinkedInComponent, FormatDatePipe],
 })
 export class SharedModule {}
